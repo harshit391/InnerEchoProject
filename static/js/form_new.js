@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const prevButton = document.getElementById('prev-button');
     const nextButton = document.getElementById('next-button');
     const submitButton = document.getElementById('submit-button');
+    const fillBtn = document.getElementById('fillIt');
 
     function showQuestion(index) {
         questions.forEach((question, i) => {
@@ -34,17 +35,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
     nextButton.addEventListener('click', () => {
         if (validateCurrentQuestion()) {
+            fillBtn.textContent = "";
             if (currentQuestion < totalQuestions - 1) {
                 currentQuestion++;
                 showQuestion(currentQuestion);
                 updateButtons();
             }
         } else {
-            alert('Please select at least one option before proceeding.');
+            fillBtn.textContent = "Please select an option before proceeding !!";
         }
+        
     });
 
     // Initialize form
     showQuestion(currentQuestion);
     updateButtons();
 });
+
+console.log(document.getElementById("google_translate_element"));
