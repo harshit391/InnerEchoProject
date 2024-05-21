@@ -1,5 +1,6 @@
-flask,
-render_tempelate,
-request,
-numpy,
+Flask
+Gunicorn
+render_tempelate
+request
+numpy
 joblib
