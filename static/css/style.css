@@ -6,7 +6,6 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 96vh;
     margin: 0;
 }
 
@@ -19,7 +18,6 @@ h1 {
 
 form {
     width: 800px;
-    height: 400px;
     background-color: #fff;
     padding: 20px;
     border-radius: 10px;
@@ -33,7 +31,6 @@ form {
     border-radius: 10px;
     background-color: #fafafa;
     transition: all 0.3s ease;
-    height: 300px;
 }
 
 .question.active {
