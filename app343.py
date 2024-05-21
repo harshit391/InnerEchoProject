@@ -1,11 +1,6 @@
 from flask import Flask, render_template, request
-import numpy as np
-import joblib
 
 app = Flask(__name__)
-
-loaded_model = joblib.load('model.pkl')
-scaler = joblib.load('scaler.save')
 
 questions = [
     "I found myself getting upset by quite trivial things.",
@@ -68,52 +63,31 @@ tipi_questions = [
 
 @app.route('/', methods=['GET', 'POST'])
 def form():
-    print(request.method)
+    print("Hello")
     if request.method == 'POST':
-        print("Request Recieved")
-        answers = [request.form.get(f'q{i}') for i in range(1, 43)]
+        print("This Works")
+        answers = [request.form.get(f'q{i}.') for i in range(1, 43)]
+        # tipi_answers = [request.form.get(f'tipi{i}') for i in range(1, 11)]
+        # education = request.form.get('education')
+        # urban = request.form.get('urban')
+        # gender = request.form.get('gender')
+        # age_group = request.form.get('age_group')
+        # religion = request.form.get('religion')
+        # orientation = request.form.get('orientation')
+        # race = request.form.get('race')
+        # married = request.form.get('married')
+
         print("Answers:", answers)
+        # print("TIPI Answers:", tipi_answers)
+        # print("Education:", education)
+        # print("Urban:", urban)
+        # print("Gender:", gender)
+        # print("Age Group:", age_group)
+        # print("Religion:", religion)
+        # print("Orientation:", orientation)
+        # print("Race:", race)
+        # print("Marital Status:", married)
 
-        tipi_answers = [request.form.get(f'tipi{i}') for i in range(1, 11)]
-        print("TIPI Answers:", tipi_answers)
-
-        education = request.form.get('education')
-        print("Education:", education)
-
-        urban = request.form.get('urban')
-        print("Urban:", urban)
-
-        gender = request.form.get('gender')
-        print("Gender:", gender)
-
-        age_group = request.form.get('age_group')
-        print("Age Group:", age_group)
-
-        religion = request.form.get('religion')
-        print("Religion:", religion)
-
-        orientation = request.form.get('orientation')
-        print("Orientation:", orientation)
-
-        race = request.form.get('race')
-        print("Race:", race)
-
-        married = request.form.get('married')
-        print("Marital Status:", married)
-
-        input_data = np.array(
-            answers + tipi_answers + [education, urban, gender, age_group, religion, orientation, race, married],
-            dtype=object)
-
-        input_data = scaler.transform([input_data])
-
-        prediction = loaded_model.predict(input_data)
-
-        # You can then use the prediction as needed, such as displaying it in the response or storing it in a database
-        print("Prediction:", prediction[0])
-
-        return render_template('result.html', result=prediction[0])
-    print("hello World")
     return render_template('form.html', questions=questions, tipi_questions=tipi_questions)
 
 
