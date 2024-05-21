@@ -1,6 +1,4 @@
-Flask
+flask
 Gunicorn
-render_tempelate
-request
 numpy
 joblib
